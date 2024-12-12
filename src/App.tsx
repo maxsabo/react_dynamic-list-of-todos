@@ -103,6 +103,7 @@ export const App: React.FC = () => {
                 onSearchChange={handleSearchChange}
                 onClearSearch={handleClearSearch}
                 searchQuery={searchQuery}
+                statusFilter={statusFilter}
               />
             </div>
 

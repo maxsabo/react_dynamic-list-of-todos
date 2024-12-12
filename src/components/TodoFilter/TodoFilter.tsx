@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 type Props = {
   onStatusChange: (status: string) => void;
   onSearchChange: (query: string) => void;
   onClearSearch: () => void;
   searchQuery: string;
+  statusFilter: string;
 };
 
 export const TodoFilter: React.FC<Props> = ({
@@ -12,13 +13,11 @@ export const TodoFilter: React.FC<Props> = ({
   onSearchChange,
   onClearSearch,
   searchQuery,
+  statusFilter,
 }) => {
-  const [status, setStatus] = useState<string>('all');
-
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = e.target.value;
 
-    setStatus(newStatus);
     onStatusChange(newStatus);
   };
 
@@ -38,7 +37,7 @@ export const TodoFilter: React.FC<Props> = ({
         <span className="select">
           <select
             data-cy="statusSelect"
-            value={status}
+            value={statusFilter}
             onChange={handleStatusChange}
           >
             <option value="all">All</option>
